@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  mongodb:
+    command: mongod --auth 
+    volumes:
+      - mongodb:/MongoDBData
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    ports:
+      - "27017:27017"
+    image: "mongo"
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: Recipes
+      MONGO_INITDB_ROOT_USERNAME: "root"
+      MONGO_INITDB_ROOT_PASSWORD: "DHBW"
+  app:
+    depends_on:
+      - mongodb
+    build: .
+    ports:
+      - "3000:3000"
+    
+    environment:
+      MONGODB_URI: "mongodb://user:DHBW@mongodb/Recipes?retryWrites=true&w=majority"
+     
+volumes:
+  mongodb:
