@@ -2,15 +2,15 @@
   "_id": {
     "$oid": "614dd75a9693912a00f0514d"
   },
-  "name": "American",
-  "image": "american-food.jpg",
+  "name": "Amerikanisch",
+  "image": "amerikanisch-food.jpg",
   "__v": 0
 },{
   "_id": {
     "$oid": "614dd75a9693912a00f0514e"
   },
-  "name": "Chinese",
-  "image": "chinese-food.jpg",
+  "name": "Chinesisch",
+  "image": "chinesisch-food.jpg",
   "__v": 0
 },{
   "_id": {

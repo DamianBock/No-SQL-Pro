@@ -18,16 +18,12 @@
 
 </div>
 
-
-<!-- Categories Start -->
-
-
 <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
 
 
-  <% if(categories != '') { %>
-    <% categories.forEach(function(category, index) { %>
-      <a href="/categories/<%- category.name %>" class="col text-center category__link">
+  <% if(kategorien != '') { %>
+    <% kategorien.forEach(function(category, index) { %>
+      <a href="/kategorien/<%- category.name %>" class="col text-center category__link">
         <div class="category__img shadow">
           <img src="img/<%- category.image %>" alt="<%- category.name %>" loading="lazy">
         </div>
@@ -36,19 +32,14 @@
     <% }) %>
   <% } %>
 
-  <a href="/categories" class="col text-center category__link">
+  <a href="/kategorien" class="col text-center category__link">
     <div class="category__img shadow">
-      <img src="img/view-all.jpg" alt="View All Categories" loading="lazy">
+      <img src="img/view-all.jpg" alt="View All Kategorien" loading="lazy">
     </div>
     <div class="pt-1">View All</div>
   </a>
 
 </div>
-<!-- Categories End -->
-
-
-
-<!-- Latest Start -->
 
 <section class="pb-4 pt-4">
   <div class="d-flex mb-2 align-items-center">
@@ -79,7 +70,7 @@
 <section class="pb-4 pt-4">
   <div class="d-flex mb-2 align-items-center">
     <h2>Thai Recipes</h2>
-    <a href="/categories/Thai" class="ms-auto">View More</a>
+    <a href="/kategorien/Thai" class="ms-auto">View More</a>
   </div>
 
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
@@ -99,16 +90,16 @@
 </section>
 <!-- Thai End -->
 
-<!-- American Start -->
+<!-- Amerikanisch Start -->
 <section class="pb-4 pt-4">
   <div class="d-flex mb-2 align-items-center">
-    <h2>American Recipes</h2>
-    <a href="/categories/American" class="ms-auto">View More</a>
+    <h2>Amerikanisch Recipes</h2>
+    <a href="/kategorien/Amerikanisch" class="ms-auto">View More</a>
   </div>
 
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-    <% if(food.american != '') { %>
-      <% food.american.forEach(function(recipe, index){ %>
+    <% if(food.amerikanisch != '') { %>
+      <% food.amerikanisch.forEach(function(recipe, index){ %>
       <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
         <div class="category__img category__img--large shadow">
           <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
@@ -121,18 +112,18 @@
     <% } %>
   </div>
 </section>
-<!-- American End -->
+<!-- Amerikanisch End -->
 
-<!-- Chinese Recipes -->
+<!-- Chinesisch Recipes -->
 <section class="pb-4 pt-4">
   <div class="d-flex mb-2 align-items-center">
-    <h2>Chinese Recipes</h2>
-    <a href="/categories/American" class="ms-auto">View More</a>
+    <h2>Chinesisch Recipes</h2>
+    <a href="/kategorien/Amerikanisch" class="ms-auto">View More</a>
   </div>
 
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-    <% if(food.chinese != '') { %>
-      <% food.chinese.forEach(function(recipe, index){ %>
+    <% if(food.chinesisch != '') { %>
+      <% food.chinesisch.forEach(function(recipe, index){ %>
       <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
         <div class="category__img category__img--large shadow">
           <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
@@ -145,7 +136,7 @@
     <% } %>
   </div>
 </section>
-<!-- American End -->
+<!-- Amerikanisch End -->
 
 
 

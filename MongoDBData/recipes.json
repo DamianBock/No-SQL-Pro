@@ -11,7 +11,7 @@
     "5 limes",
     "200 ml double cream"
   ],
-  "category": "American",
+  "category": "Amerikanisch",
   "image": "crab-cakes.jpg",
   "__v": 0
 },{
@@ -41,7 +41,7 @@
   "ingredients": [
     "3 cloves of garlic",
     "5cm piece of ginger",
-    "200 g mixed Asian greens , such as baby pak choi, choy sum, Chinese cabbage",
+    "200 g mixed Asian greens , such as baby pak choi, choy sum, Chinesisch cabbage",
     "2 spring onions",
     "1 fresh red chilli"
   ],
@@ -52,7 +52,7 @@
   "_id": {
     "$oid": "614dd8d3c59f69c8ebcc18aa"
   },
-  "name": "Thai-Chinese-inspired pinch salad",
+  "name": "Thai-Chinesisch-inspired pinch salad",
   "description": "Peel and very finely chop the ginger and deseed and finely slice the chilli (deseed if you like). Toast the sesame seeds in a dry frying pan until lightly golden, then remove to a bowl.\n        Mix the prawns with the five-spice and ginger, finely grate in the lime zest and add a splash of sesame oil. Toss to coat, then leave to marinate.\n    \n        Source: https://www.jamieoliver.com/recipes/seafood-recipes/asian-pinch-salad/",
   "email": "hello@email.com",
   "ingredients": [
@@ -60,10 +60,10 @@
     "1 fresh red chilli",
     "25 g sesame seeds",
     "24 raw peeled king prawns , from sustainable sources (defrost first, if using frozen)",
-    "1 pinch Chinese five-spice powder"
+    "1 pinch Chinesisch five-spice powder"
   ],
-  "category": "Chinese",
-  "image": "thai-chinese-inspired-pinch-salad.jpg",
+  "category": "Chinesisch",
+  "image": "thai-chinesisch-inspired-pinch-salad.jpg",
   "__v": 0
 },{
   "_id": {
@@ -82,7 +82,7 @@
     "1 level teaspoon cayenne pepper",
     "1 level teaspoon hot smoked paprika"
   ],
-  "category": "American",
+  "category": "Amerikanisch",
   "image": "southern-friend-chicken.jpg",
   "__v": 0
 },{
@@ -102,7 +102,7 @@
     "1 teaspoon cayenne pepper",
     "olive oil"
   ],
-  "category": "American",
+  "category": "Amerikanisch",
   "image": "chocolate-banoffe-whoopie-pies.jpg",
   "__v": 0
 },{
@@ -126,8 +126,8 @@
   "_id": {
     "$oid": "614dd8d3c59f69c8ebcc18a9"
   },
-  "name": "Chinese steak & tofu stew",
-  "description": "Get your prep done first, for smooth cooking. Chop the steak into 1cm chunks, trimming away and discarding any fat.\n        Peel and finely chop the garlic and ginger and slice the chilli. Trim the spring onions, finely slice the top green halves and put aside, then chop the whites into 2cm chunks. Peel the carrots and mooli or radishes, and chop to a similar size.\n        Place a large pan on a medium-high heat and toast the Szechuan peppercorns while it heats up. Tip into a pestle and mortar, leaving the pan on the heat.\n        Place the chopped steak in the pan with 1 tablespoon of groundnut oil. Stir until starting to brown, then add the garlic, ginger, chilli, the white spring onions, carrots and mooli or radishes.\n    \n        Source: https://www.jamieoliver.com/recipes/stew-recipes/chinese-steak-tofu-stew/",
+  "name": "Chinesisch steak & tofu stew",
+  "description": "Get your prep done first, for smooth cooking. Chop the steak into 1cm chunks, trimming away and discarding any fat.\n        Peel and finely chop the garlic and ginger and slice the chilli. Trim the spring onions, finely slice the top green halves and put aside, then chop the whites into 2cm chunks. Peel the carrots and mooli or radishes, and chop to a similar size.\n        Place a large pan on a medium-high heat and toast the Szechuan peppercorns while it heats up. Tip into a pestle and mortar, leaving the pan on the heat.\n        Place the chopped steak in the pan with 1 tablespoon of groundnut oil. Stir until starting to brown, then add the garlic, ginger, chilli, the white spring onions, carrots and mooli or radishes.\n    \n        Source: https://www.jamieoliver.com/recipes/stew-recipes/chinesisch-steak-tofu-stew/",
   "email": "hello@email.com",
   "ingredients": [
     "250g rump or sirloin steak",
@@ -136,8 +136,8 @@
     "2 fresh red chilli",
     "1 bunch of spring onions"
   ],
-  "category": "Chinese",
-  "image": "chinese-steak-tofu-stew.jpg",
+  "category": "Chinesisch",
+  "image": "chinesisch-steak-tofu-stew.jpg",
   "__v": 0
 },{
   "_id": {
@@ -149,11 +149,11 @@
   "ingredients": [
     "40 g dried Asian mushrooms",
     "50 g vermicelli noodles",
-    "200 g Chinese cabbage",
+    "200 g Chinesisch cabbage",
     "1 carrot",
     "3 spring onions"
   ],
-  "category": "Chinese",
+  "category": "Chinesisch",
   "image": "spring-rolls.jpg",
   "__v": 0
 },{
@@ -171,7 +171,7 @@
     "2 teaspoons cornflour",
     "2 x 120 g free-range chicken breasts , skin on"
   ],
-  "category": "Chinese",
+  "category": "Chinesisch",
   "image": "tom-daley.jpg",
   "__v": 0
 },{
@@ -191,7 +191,7 @@
     "1 teaspoon cayenne pepper",
     "olive oil"
   ],
-  "category": "American",
+  "category": "Amerikanisch",
   "image": "crab-cakes.jpg",
   "__v": 0
 },{
@@ -222,7 +222,7 @@
     "5 limes",
     "200 ml double cream"
   ],
-  "category": "American",
+  "category": "Amerikanisch",
   "image": "key-lime-pie.jpg",
   "__v": 0
 },{
@@ -239,7 +239,7 @@
     "1 stick of celery",
     "2 tablespoons mayonnaise , made using free-range eggs"
   ],
-  "category": "American",
+  "category": "Amerikanisch",
   "image": "grilled-lobster-rolls.jpg",
   "__v": 0
 },{
@@ -274,7 +274,7 @@
     "1 handful of mangetout",
     "a few shiitake mushrooms"
   ],
-  "category": "Chinese",
+  "category": "Chinesisch",
   "image": "stir-fried-vegetables.jpg",
   "__v": 0
 },{
@@ -288,6 +288,6 @@
     "Water"
   ],
   "category": "Mexican",
-  "image": "chinese-steak-tofu-stew.jpg",
+  "image": "chinesisch-steak-tofu-stew.jpg",
   "__v": 0
 }]

@@ -1,53 +1,39 @@
 require('../models/database');
 const Category = require('../models/Category');
 const Recipe = require('../models/Recipe');
-
-/**
- * GET /
- * Homepage 
-*/
 exports.homepage = async(req, res) => {
   try {
     const limitNumber = 5;
-    const categories = await Category.find({}).limit(limitNumber);
+    const kategorien = await Category.find({}).limit(limitNumber);
     const latest = await Recipe.find({}).sort({_id: -1}).limit(limitNumber);
     const thai = await Recipe.find({ 'category': 'Thai' }).limit(limitNumber);
-    const american = await Recipe.find({ 'category': 'American' }).limit(limitNumber);
-    const chinese = await Recipe.find({ 'category': 'Chinese' }).limit(limitNumber);
+    const amerikanisch = await Recipe.find({ 'category': 'Amerikanisch' }).limit(limitNumber);
+    const chinesisch = await Recipe.find({ 'category': 'Chinesisch' }).limit(limitNumber);
 
-    const food = { latest, thai, american, chinese };
+    const food = { latest, thai, amerikanisch, chinesisch };
 
-    res.render('index', { title: 'Cooking Blog - Home', categories, food } );
+    res.render('index', { title: 'Koch Blog - Home', kategorien, food } );
   } catch (error) {
     res.satus(500).send({message: error.message || "Error Occured" });
   }
 }
 
-/**
- * GET /categories
- * Categories 
-*/
-exports.exploreCategories = async(req, res) => {
+exports.exploreKategorien = async(req, res) => {
   try {
     const limitNumber = 20;
-    const categories = await Category.find({}).limit(limitNumber);
-    res.render('categories', { title: 'Cooking Blog - Categoreis', categories } );
+    const kategorien = await Category.find({}).limit(limitNumber);
+    res.render('kategorien', { title: 'Koch Blog - Kategorien', kategorien } );
   } catch (error) {
     res.satus(500).send({message: error.message || "Error Occured" });
   }
 } 
 
-
-/**
- * GET /categories/:id
- * Categories By Id
-*/
-exports.exploreCategoriesById = async(req, res) => { 
+exports.exploreKategorienById = async(req, res) => { 
   try {
     let categoryId = req.params.id;
     const limitNumber = 20;
     const categoryById = await Recipe.find({ 'category': categoryId }).limit(limitNumber);
-    res.render('categories', { title: 'Cooking Blog - Categoreis', categoryById } );
+    res.render('kategorien', { title: 'Koch Blog - Kategorien', categoryById } );
   } catch (error) {
     res.satus(500).send({message: error.message || "Error Occured" });
   }
@@ -61,7 +47,7 @@ exports.exploreRecipe = async(req, res) => {
   try {
     let recipeId = req.params.id;
     const recipe = await Recipe.findById(recipeId);
-    res.render('recipe', { title: 'Cooking Blog - Recipe', recipe } );
+    res.render('recipe', { title: 'Koch Blog - Recipe', recipe } );
   } catch (error) {
     res.satus(500).send({message: error.message || "Error Occured" });
   }
@@ -76,7 +62,7 @@ exports.searchRecipe = async(req, res) => {
   try {
     let searchTerm = req.body.searchTerm;
     let recipe = await Recipe.find( { $text: { $search: searchTerm, $diacriticSensitive: true } });
-    res.render('search', { title: 'Cooking Blog - Search', recipe } );
+    res.render('search', { title: 'Koch Blog - Search', recipe } );
   } catch (error) {
     res.satus(500).send({message: error.message || "Error Occured" });
   }
@@ -91,7 +77,7 @@ exports.exploreLatest = async(req, res) => {
   try {
     const limitNumber = 20;
     const recipe = await Recipe.find({}).sort({ _id: -1 }).limit(limitNumber);
-    res.render('explore-latest', { title: 'Cooking Blog - Explore Latest', recipe } );
+    res.render('explore-latest', { title: 'Koch Blog - Explore Latest', recipe } );
   } catch (error) {
     res.satus(500).send({message: error.message || "Error Occured" });
   }
@@ -108,7 +94,7 @@ exports.exploreRandom = async(req, res) => {
     let count = await Recipe.find().countDocuments();
     let random = Math.floor(Math.random() * count);
     let recipe = await Recipe.findOne().skip(random).exec();
-    res.render('explore-random', { title: 'Cooking Blog - Explore Latest', recipe } );
+    res.render('explore-random', { title: 'Koch Blog - Explore Latest', recipe } );
   } catch (error) {
     res.satus(500).send({message: error.message || "Error Occured" });
   }
@@ -122,7 +108,7 @@ exports.exploreRandom = async(req, res) => {
 exports.submitRecipe = async(req, res) => {
   const infoErrorsObj = req.flash('infoErrors');
   const infoSubmitObj = req.flash('infoSubmit');
-  res.render('submit-recipe', { title: 'Cooking Blog - Submit Recipe', infoErrorsObj, infoSubmitObj  } );
+  res.render('submit-recipe', { title: 'Koch Blog - Submit Recipe', infoErrorsObj, infoSubmitObj  } );
 }
 
 /**
@@ -210,12 +196,12 @@ exports.submitRecipeOnPost = async(req, res) => {
 //         "image": "thai-food.jpg"
 //       },
 //       {
-//         "name": "American",
-//         "image": "american-food.jpg"
+//         "name": "Amerikanisch",
+//         "image": "amerikanisch-food.jpg"
 //       }, 
 //       {
-//         "name": "Chinese",
-//         "image": "chinese-food.jpg"
+//         "name": "Chinesisch",
+//         "image": "chinesisch-food.jpg"
 //       },
 //       {
 //         "name": "Mexican",
@@ -250,7 +236,7 @@ exports.submitRecipeOnPost = async(req, res) => {
 //           "1 level teaspoon cayenne pepper",
 //           "1 level teaspoon hot smoked paprika",
 //         ],
-//         "category": "American", 
+//         "category": "Amerikanisch", 
 //         "image": "southern-friend-chicken.jpg"
 //       },
 //       { 
@@ -262,7 +248,7 @@ exports.submitRecipeOnPost = async(req, res) => {
 //           "1 level teaspoon cayenne pepper",
 //           "1 level teaspoon hot smoked paprika",
 //         ],
-//         "category": "American", 
+//         "category": "Amerikanisch", 
 //         "image": "southern-friend-chicken.jpg"
 //       },
 //     ]);
