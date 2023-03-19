@@ -22,10 +22,14 @@ const recipeSchema = new mongoose.Schema({
     enum: ['Thai', 'Amerikanisch', 'Chinesisch', 'Mexican', 'Indian'],
     required: 'This field is required.'
   },
-  image: {
-    type: String,
-    required: 'This field is required.'
-  },
+  img:
+  {
+ 
+  data: Buffer,
+ 
+  contentType: String
+ 
+  }
 });
 
 recipeSchema.index({ name: 'text', description: 'text' });
