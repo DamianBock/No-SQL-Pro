@@ -1,4 +1,5 @@
 require('../models/database');
+const fs = require('fs');
 const Category = require('../models/Category');
 const Recipe = require('../models/Recipe');
 exports.homepage = async(req, res) => {
@@ -117,34 +118,15 @@ exports.submitRecipe = async(req, res) => {
 */
 exports.submitRecipeOnPost = async(req, res) => {
   try {
-
-    let imageUploadFile;
-    let uploadPath;
-    let newImageName;
-
-    if(!req.files || Object.keys(req.files).length === 0){
-      console.log('No Files where uploaded.');
-    } else {
-
-      imageUploadFile = req.files.image;
-      newImageName = Date.now() + imageUploadFile.name;
-
-      uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
-
-      imageUploadFile.mv(uploadPath, function(err){
-        if(err) return res.satus(500).send(err);
-      })
-
-    }
-
+    console.log(req.files.image);
     const newRecipe = new Recipe({
       name: req.body.name,
       description: req.body.description,
       email: req.body.email,
       ingredients: req.body.ingredients,
       category: req.body.category,
-      image:{data: req.files.image,
-      contenttype: "image/png"  } 
+      img:req.files.image.data,
+      contenttype: "image/png"        
     });
     
     await newRecipe.save();
@@ -224,38 +206,108 @@ async function insertDymmyCategoryData(){
 // insertDymmyCategoryData();
 
 
-// async function insertDymmyRecipeData(){
-//   try {
-//     await Recipe.insertMany([
-//       { 
-//         "name": "Recipe Name Goes Here",
-//         "description": `Recipe Description Goes Here`,
-//         "email": "recipeemail@raddy.co.uk",
-//         "ingredients": [
-//           "1 level teaspoon baking powder",
-//           "1 level teaspoon cayenne pepper",
-//           "1 level teaspoon hot smoked paprika",
-//         ],
-//         "category": "Amerikanisch", 
-//         "image": "southern-friend-chicken.jpg"
-//       },
-//       { 
-//         "name": "Recipe Name Goes Here",
-//         "description": `Recipe Description Goes Here`,
-//         "email": "recipeemail@raddy.co.uk",
-//         "ingredients": [
-//           "1 level teaspoon baking powder",
-//           "1 level teaspoon cayenne pepper",
-//           "1 level teaspoon hot smoked paprika",
-//         ],
-//         "category": "Amerikanisch", 
-//         "image": "southern-friend-chicken.jpg"
-//       },
-//     ]);
-//   } catch (error) {
-//     console.log('err', + error)
-//   }
-// }
+async function generateData(){
+  const categories = ['Thai', 'Amerikanisch', 'Chinesisch', 'Mexican', 'Indian'];
+const imagePaths = [
+  'public/img/spanish-food.jpg',
+  'public/img/mexican-food.jpg',
+  'public/img/chinese-food.jpg'
+];
+const recipes = [];
+const ingredientsList = [
+  'Pasta', 'Reis', 'Tofu', 'Hähnchen', 'Rindfleisch', 'Schweinefleisch', 'Fisch', 'Garnelen',
+  'Spinat', 'Brokkoli', 'Karotten', 'Paprika', 'Zwiebeln', 'Knoblauch',
+  'Sojasauce', 'Honig', 'Essig', 'Olivenöl', 'Kokosmilch',
+  'Salz', 'Pfeffer', 'Zucker', 'Maisstärke',
+  'Kartoffeln', 'Tomaten', 'Pilze', 'Koriander', 'Ingwer', 'Currypulver', 'Chili', 'Kreuzkümmel'
+];
+const descriptionsList = [
+  'Ein köstliches und aromatisches Rezept.',
+  'Eine gesunde und herzhafte Mahlzeit.',
+  'Perfekt für ein Abendessen unter der Woche.',
+  'Toll für die Unterhaltung von Gästen.',
+  'Ein Familienfavorit, den jeder lieben wird.',
+  'Einfach zuzubereiten und voller Geschmack.',
+  'Ein zufriedenstellendes und sättigendes Gericht.',
+  'Voll von frischen Zutaten und kräftigen Aromen.',
+  'Ein klassisches Rezept mit einem modernen Touch.',
+  'Eine wohltuende und leckere Mahlzeit.',
+  'Ein leichtes und gesundes Gericht.',
+  'Einfach und schnell zuzubereiten.',
+  'Ideal für Partys und Feiern.',
+  'Ein traditionelles Gericht mit regionalen Zutaten.',
+  'Geeignet für jeden Anlass und jede Jahreszeit.',
+  'Einzigartig und unverwechselbar im Geschmack.',
+  'Ein Geheimtipp für alle Feinschmecker.',
+  'Ein kreatives Rezept mit überraschenden Aromen.',
+  'Ein echter Gaumenschmaus für alle Sinne.',
+  'Eine gelungene Kombination aus verschiedenen Geschmacksrichtungen.',
+  'Ein echter Klassiker, der nie aus der Mode kommt.',
+  'Eine kulinarische Entdeckungsreise für alle Genießer.',
+  'Ein einfaches Gericht mit raffiniertem Geschmack.',
+  'Ein gesunder Snack für zwischendurch.',
+  'Ideal für eine schnelle und leckere Mahlzeit.',
+  'Eine süße Versuchung für Naschkatzen.',
+  'Ein aromatisches Gericht mit exotischen Zutaten.',
+  'Ein Geheimtipp für alle, die es scharf mögen.',
+  'Ein Genuss für alle Sinne und Gaumen.'
+];
+const recipeNames = [
+  'Schweinefilet im Karamellmantel mit Ingwer-Soße und Kartoffelpüree',
+  'Pikante Gemüsepfanne mit Erdnussbutter, Kokosmilch und Curry',
+  'Knusprige Hähnchenschenkel mit Honig-Senf-Glasur und Ofenkartoffeln',
+  'Kartoffelgratin mit Lachs, Spinat und Sahne-Soße',
+  'Gefüllte Paprikaschoten mit Hackfleisch, Reis und Käse überbacken',
+  'Vegetarische Gemüse-Burger mit Guacamole und Tomaten-Salsa',
+  'Scharfes Chili con Carne mit Bohnen, Mais und Sour Cream',
+  'Käse-Spinat-Suppe mit Hackbällchen und frischem Baguette',
+  'Gebratener Reis mit Eiern, Gemüse und knusprigem Speck',
+  'Zitronen-Hähnchen mit Thymian-Kartoffeln und gedünstetem Brokkoli',
+  'Kartoffel-Gemüse-Gratin mit Gouda und Knoblauch',
+  'Kürbisrisotto mit Parmesan und gerösteten Kürbiskernen',
+  'Hackbraten im Speckmantel mit Rosmarin-Kartoffeln und Pilzsoße',
+  'Hähnchen-Cordon-Bleu mit Karotten-Salat und Kartoffel-Spalten',
+  'Spinat-Lachs-Lasagne mit Bechamel-Soße und geriebenem Gouda',
+  'Herzhafte Pfannkuchen mit Speck, Zwiebeln und Käse',
+  'Penne in Tomaten-Butter-Soße mit gebratenen Garnelen und Rucola',
+  'Vegetarischer Nudelauflauf mit Mozzarella, Tomaten und Basilikum',
+  'Gemüse-Ratatouille mit Knoblauch-Croutons und Parmesan',
+  'Linsen-Eintopf mit Würstchen, Karotten und Sellerie',
+  'Zitronen-Kartoffeln mit gebratenem Hähnchen und frischem Rucola',
+  'Paprika-Hack-Pfanne mit Feta und Oliven, dazu Baguette',
+  'Himbeer-Joghurt-Torte mit Schokoladenboden und Mandel-Verzierung',
+  'Schweinebraten mit Kartoffelknödeln, Rotkohl und Soße'
+];
+for (let i = 1; i <= 30; i++) {
+  const name = recipeNames[Math.floor(Math.random() * recipeNames.length)];
+  const description = descriptionsList[Math.floor(Math.random() * descriptionsList.length)];
+  const email = `user${i}@example.com`;
+  const ingredients = [
+    ingredientsList[Math.floor(Math.random() * ingredientsList.length)],
+    ingredientsList[Math.floor(Math.random() * ingredientsList.length)],
+    ingredientsList[Math.floor(Math.random() * ingredientsList.length)]
+  ];
+  const category = categories[Math.floor(Math.random() * categories.length)];
+  const imagePath = imagePaths[Math.floor(Math.random() * imagePaths.length)];
+  const img = Buffer.from(fs.readFileSync(imagePath));
+  const contenttype = 'image/jpeg';
+  
+  recipes.push({
+    name,
+    description,
+    email,
+    ingredients,
+    category,
+    img,
+    contenttype
+  });
+}
 
-// insertDymmyRecipeData();
+  try {
+    await Recipe.insertMany(recipes)
+    console.log(2);
+   }
+  catch{}
+}
+generateData();
 

@@ -24,16 +24,14 @@ const recipeSchema = new mongoose.Schema({
   },
   img:
   {
- 
-  data: Buffer,
- 
-  contentType: String
- 
+  type: Buffer,
+  required: 'This field is required.'
+  }, 
+  contenttype: {
+    type: String,
+    required: 'This field is required.'
   }
 });
 
 recipeSchema.index({ name: 'text', description: 'text' });
-// WildCard Indexing
-//recipeSchema.index({ "$**" : 'text' });
-
 module.exports = mongoose.model('Recipe', recipeSchema);
